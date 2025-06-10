@@ -26,10 +26,10 @@ app.add_middleware(
 # Setup vector DB connection
 vectorstore = get_pg_vectorstore()
 
-# Endpoint to load all documents from "data/" and embed + store in DB
+# Endpoint to load all documents from "../data" and embed + store in DB
 @app.post("/load-data")
 def load_data(dataset: str = "default"):
-    docs = load_documents_from_folder("data/", dataset_tag=dataset)
+    docs = load_documents_from_folder("../data", dataset_tag=dataset)
     if not docs:
         return {"status": "No documents found."}
     
